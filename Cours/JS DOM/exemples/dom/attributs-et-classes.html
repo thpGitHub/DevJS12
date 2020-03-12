@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attributs et Classes</title>
+    <style>
+        .rouge {
+            color: red;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .disabled {
+            background-color: gray;
+            color: lightgray;
+        }
+    </style>
+  </head>
+  <body>
+    <header
+      id="page-menu"
+      petit-dejeuner="croissants et jus d'orange"
+      title="je m'affiche au survol de la balise"
+    >
+      <nav class="menu">
+        <ul>
+          <li><a>Accueil</a></li>
+          <li><a>A propos</a></li>
+          <li><a>Boutique</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <h1>Cibler des éléments dans la page</h1>
+
+    <article>
+      <p class="chapitre">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, porro ex
+        iusto, maxime quos dolorem repellat fugit quia mollitia id, vel quaerat
+        sapiente inventore sunt. Provident minima reprehenderit nam porro.
+      </p>
+      <p class="chapitre">
+        Inventore aut enim cumque obcaecati eos assumenda voluptas corporis quo
+        rem necessitatibus vero aspernatur rerum unde incidunt iste,
+        eligendi</a>
+        vitae, eveniet amet sed deleniti exercitationem maiores reprehenderit
+        molestias quibusdam? Nulla.
+      </p>
+      <p class="chapitre">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio
+        atque vel repellendus nemo voluptas! Omnis sit accusantium in?
+        Dignissimos aut magnam facilis vero. Quaerat molestiae aperiam vitae,
+        laborum minus cum.
+      </p>
+      <a id="un-lien" href="https://www.google.com/">Aller vers Google</a>
+    </article>
+
+    <script>
+      var header = document.querySelector("header");
+
+      // ajouter (ou modifier) des attributs HTML
+      header.id = "toto";
+
+      header.setAttribute("id", "page-menu");
+      header.setAttribute("petit-dejeuner", "croissants et jus d'orange");
+      header.setAttribute("title", "je m'affiche au survol de la balise");
+
+      // Modifier l'attribut classe
+      header.className = "mon-header";
+
+      console.log(header.className);
+      console.log(header.classList);
+
+      header.classList.add("rouge");
+      header.classList.add("rouge");
+      header.classList.add("rouge");
+      header.classList.add("rouge");
+
+      function activerDesactiverClasse(element, nomDeClasse) {
+          element.classList.toggle(nomDeClasse);
+      }
+
+      activerDesactiverClasse(header, "rouge");
+    </script>
+  </body>
+</html>

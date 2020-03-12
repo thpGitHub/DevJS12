@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        On souhaite faire hériter TOUS les éléphants des mammouth.
+        2 étapes :
+        1. hériter les propriétés propres
+        2. hériter le prototype
+      */
+
+      function Mammouth(age, poids) {
+        this.age = age;
+        this.poids = poids;
+      }
+      Mammouth.prototype.barrir = function() {
+        console.log("Touuuuutt");
+      };
+
+      // Hérite de Mammouth
+      function Elephant(age, poids) {
+        // 1. Héritage des propriétés :
+        // On appelle la fonction Mammouth en lui affectant pour valeur de `this` l'instance de la fonction Elephant qui sera renvoyée.
+        Mammouth.call(this, age, poids);
+      }
+
+      // 2. Héritage de prototype :
+      // La propriété .prototype de Elephant vaut un objet dont le prototype est Mammouth.prototype.
+      Elephant.prototype = Object.create(Mammouth.prototype);
+      // On vient d'effacer la propriété .constructor, donc on la remet sur Elephant.prototype
+      Elephant.prototype.constructor = Elephant;
+
+      Elephant.prototype.manger = function() {
+        console.log("scrunch scrunch");
+      };
+
+      var dumbo = new Elephant(10, 2000);
+    </script>
+  </body>
+</html>

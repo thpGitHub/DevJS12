@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple 8</title>
+    <script>
+        // Boucle dont on ne connaît le nombre d'itération(s)
+        var reponse = confirm('Voulez-vous continuer ?');
+        while (reponse == true) {
+            reponse = confirm('Voulez-vous continuer ?');
+        }
+
+        // Boucle ayant un nombre d'itération(s) fixé avec WHILE
+        var compteur = 0;
+        while (compteur < 5) {
+            alert('Tour numéro ' + (compteur + 1) + ' dans la boucle while.');
+            compteur = compteur + 1;
+        }
+        alert('Fin boucle while');
+        
+        // Boucle ayant un nombre d'itération(s) fixé avec FOR
+        for (var i=0;i<5;i++) {
+            alert('Tour numéro ' + (i + 1) + ' dans la boucle for.');
+        }
+        alert('Fin boucle for');
+    </script>
+</head>
+<body>
+    <h1>Exemple 8</h1>
+</body>
+</html>

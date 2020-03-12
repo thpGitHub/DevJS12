@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mot-clé this</title>
+  </head>
+  <body>
+    <script>
+      var mario = {
+        nom: "Mario", // string
+        couleur: "rouge", // propriété de l'objet mario
+        grand: false, // boolean
+        vitesse: 2, // nombre
+        nombreDeVies: 5,
+        amis: ["Peach", "Luigi"], // tableau
+        sauter: function() {
+          // fonction
+          console.log(this);
+          console.log("JUMP!");
+        }, // méthode de l'objet mario
+        // UNE PROPRIETE CONTENANT UN OBJET ?
+        jeu: {
+          nom: "Super Mario Bros",
+          plateforme: "Wii"
+        },
+        gagnerUneVie: function() {
+          // this représente l'objet contenant la méthode.
+          // Ici, c'est l'objet mario.
+          this.nombreDeVies += 1;
+        }
+      };
+
+      var luigi = {
+        nom: "Luigi", // string
+        couleur: "vert", // propriété de l'objet mario
+        grand: false, // boolean
+        vitesse: 2, // nombre
+        nombreDeVies: 5,
+        amis: ["Peach", "Mario"], // tableau
+        sauter: function() {
+          // fonction
+          console.log("JUMP!");
+        }, // méthode de l'objet mario
+        // UNE PROPRIETE CONTENANT UN OBJET ?
+        jeu: {
+          nom: "Super Mario Bros",
+          plateforme: "Wii"
+        },
+        gagnerUneVie: function() {
+          // this représente l'objet contenant la méthode.
+          // Ici, c'est l'objet luigi.
+          this.nombreDeVies += 1;
+        }
+      };
+
+      /*
+            LABORIEUX :
+            On crée une méthode pour chaque personnage, alors que les deux méthodes font sensiblement la même chose (décrémenter le nombre de vies du personnage).
+        */
+      function perdreUneVieMario() {
+        mario.nombreDeVies -= 1;
+      }
+      function perdreUneVieLuigi() {
+        luigi.nombreDeVies -= 1;
+      }
+      mario.perdreUneVie = perdreUneVieMario;
+      luigi.perdreUneVie = perdreUneVieLuigi;
+
+      /*
+            MEILLEUR :
+            On crée une seule méthode et on utilise le mot-clé `this` pour désigner le personnage (l'objet) contenant la méthode.
+        */
+      function perdreUneVie() {
+        // this désigne l'objet auquel est rattaché la fonction (la méthode)
+        console.log("this", this);
+        this.nombreDeVies -= 1;
+      }
+      // dans le 1er cas, this désignera mario
+      mario.perdreUneVie = perdreUneVie;
+      // dans le 2nd cas, this désignera luigi
+      luigi.perdreUneVie = perdreUneVie;
+    </script>
+  </body>
+</html>

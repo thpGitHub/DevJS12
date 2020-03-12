@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple 11</title>
+    <script src="Exemple-11-reprise_mercredi_26.js"></script>
+    <style>
+        div {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #changement {
+            margin-bottom: 10px;
+        }
+
+        button {
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exemple 11</h1>
+    <div id="changement">
+        <button onclick="pluie = changementValeur(1,pluie);">Augmentation pluie (+1)</button>
+        <button onclick="pluie = changementValeur(-1,pluie);">Diminution pluie (-1)</button>
+        <button onclick="soleil = changementValeur(1,soleil);">Augmentation soleil (+1)</button>
+        <button onclick="soleil = changementValeur(-1,soleil);">Diminution soleil (-1)</button>
+    </div>
+    <div>
+        <button onclick="alert(pluie);">Affichage valeur pluie</button>
+        <button onclick="alert(soleil);">Affichage valeur soleil</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Première façon de créer une fonction.
+        // On crée une variable dans laquelle on stocke une fonction dite "anonyme".
+        var maFonction = function () {
+            console.log("une variable qui contient une fonction anonyme");
+        }
+
+        // Deuxième façon de créer une fonction.
+        // On déclare la fonction en la nommant.
+        function maDeuxiemeFonction() {
+            console.log("une fonction nommée pas contenue dans une variable, que je peux aussi appeler");
+        }
+
+        // Dans les 2 cas, j'appelle mes fonctions de la même manière.
+        maFonction();
+        maDeuxiemeFonction();
+
+        // Comment modifier les fonctions ?
+        maFonction = function() {
+            console.log("une nouvelle fonction stockée dans la même variable");
+        }
+
+        function maDeuxiemeFonction() {
+            console.log("une redéfinition de la deuxième fonction");
+        }
+
+        maFonction = "toto"; // attention, tout est faisable.
+
+        // Rien n'empêche de mettre une fonction nommée dans une variable.
+        var fonction1 = function () {
+            console.log("Qui suis-je ??");
+        }
+
+        var fonction2 = fonction1;
+
+        fonction1();
+        fonction2();
+    </script>
+</body>
+</html>

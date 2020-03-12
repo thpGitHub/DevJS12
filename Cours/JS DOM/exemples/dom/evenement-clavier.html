@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      #zone-de-jeu {
+        position: relative;
+        width: 500px;
+        height: 400px;
+        background-color: #ddd;
+        margin: 50px;
+      }
+      #carre {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="zone-de-jeu">
+      <div id="carre" style="top: 5px; left: 5px;"></div>
+    </div>
+
+    <script>
+      var zoneDeJeu = document.getElementById("zone-de-jeu");
+      var carre = document.getElementById("carre");
+      var largeurCarre = parseInt(getComputedStyle(carre).width);
+      var hauteurCarre = parseInt(getComputedStyle(carre).height);
+
+      var largeurZoneDeJeu = parseInt(getComputedStyle(zoneDeJeu).width);
+      var hauteurZoneDeJeu = parseInt(getComputedStyle(zoneDeJeu).height);
+
+      var touches = {
+        ArrowLeft: false,
+        ArrowRight: false,
+        ArrowUp: false,
+        ArrowDown: false
+      };
+
+      window.addEventListener("keydown", function(evenement) {
+        // Récupération des coordonnées et conversion en nombre
+        switch (evenement.code) {
+          case "ArrowLeft":
+            touches.ArrowLeft = true;
+            break;
+          case "ArrowRight":
+            touches.ArrowRight = true;
+            break;
+          case "ArrowUp":
+            touches.ArrowUp = true;
+            break;
+          case "ArrowDown":
+            touches.ArrowDown = true;
+            break;
+        }
+      });
+
+      window.addEventListener("keyup", function(evenement) {
+        switch (evenement.code) {
+          case "ArrowLeft":
+            touches.ArrowLeft = false;
+            break;
+          case "ArrowRight":
+            touches.ArrowRight = false;
+            break;
+          case "ArrowUp":
+            touches.ArrowUp = false;
+            break;
+          case "ArrowDown":
+            touches.ArrowDown = false;
+            break;
+        }
+      });
+
+      function boucle() {
+        var top = parseInt(carre.style.top);
+        var left = parseInt(carre.style.left);
+        var right = left + largeurCarre;
+        var bottom = top + hauteurCarre;
+
+        if (touches.ArrowLeft) {
+          var nextLeft = left - 30;
+          if (nextLeft >= 0) {
+            // Peut se déplacer vert la gauche
+            left = nextLeft;
+          } else {
+            // Ne peut pas se déplacer, se colle au bord de la zone de jeu
+            left = 0;
+          }
+        }
+        if (touches.ArrowRight) {
+          if (right + 30 <= largeurZoneDeJeu) {
+            left += 30;
+          } else {
+            left = largeurZoneDeJeu - largeurCarre;
+          }
+        }
+        if (touches.ArrowUp) {
+          var nextTop = top - 30;
+          if (nextTop >= 0) {
+            // Peut se déplacer vert le haut
+            top = nextTop;
+          } else {
+            // Ne peut pas se déplacer, se colle au bord de la zone de jeu
+            top = 0;
+          }
+        }
+        if (touches.ArrowDown) {
+          if (bottom + 30 <= hauteurZoneDeJeu) {
+            top += 30;
+          } else {
+            top = hauteurZoneDeJeu - hauteurCarre;
+          }
+        }
+        carre.style.left = left + "px";
+        carre.style.top = top + "px";
+      }
+
+      setInterval(boucle, 50);
+    </script>
+  </body>
+</html>

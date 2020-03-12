@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objets fondamentaux de JavaScript</title>
+</head>
+<body>
+    <script>
+        // JSON
+        var unObjet = { a: 1 }
+        JSON.parse('{ "nom": "toto", "age": 10 }')
+        console.log('objet converti en JSON', JSON.stringify(unObjet));
+
+        // Math
+        var rayon = 10;
+        console.log("rayon", rayon); // 5
+        console.log("circonférence", 2 * Math.PI * rayon);
+        console.log("maximum", Math.max(1, -20, 50, 100.2, Math.PI));
+
+        // Date
+        console.log(Date.now());
+    </script>
+</body>
+</html>

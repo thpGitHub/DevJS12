@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ciblage Précis</title>
+    <style></style>
+  </head>
+  <body>
+    <header
+      id="page-menu"
+      petit-dejeuner="croissants et jus d'orange"
+      title="je m'affiche au survol de la balise"
+    >
+      <nav>
+        <ul>
+          <li><a>Accueil</a></li>
+          <li><a>A propos</a></li>
+          <li><a>Boutique</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <h1>Cibler des éléments dans la page</h1>
+
+    <article>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, porro ex
+        iusto, maxime quos dolorem repellat fugit quia mollitia id, vel quaerat
+        sapiente inventore sunt. Provident minima reprehenderit nam porro.
+      </p>
+      <p>
+        Inventore aut enim cumque obcaecati eos assumenda voluptas corporis quo
+        rem necessitatibus vero aspernatur rerum unde incidunt iste,
+        <a href="#">eligendi</a>
+        vitae, eveniet amet sed deleniti exercitationem maiores reprehenderit
+        molestias quibusdam? Nulla.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio
+        atque vel repellendus nemo voluptas! Omnis sit accusantium in?
+        Dignissimos aut magnam facilis vero. Quaerat molestiae aperiam vitae,
+        laborum minus cum.
+      </p>
+    </article>
+
+    <script>
+      // Création d'élément
+      var uneSection = document.createElement("section");
+
+      // On ajoute du contenu textuel à la section
+      uneSection.textContent = "ma section se sent moins vide";
+
+      // Insérer un élément dans la page
+      document.body.append(uneSection);
+
+      // Ajout d'un autre élément HTML
+      var unParagraphe = document.createElement("P");
+      unParagraphe.textContent = "Un paragraphe créé de toutes pièces.";
+      document.body.append(unParagraphe);
+
+      // Insérer à n'importe quel endroit
+      var header = document.createElement("header");
+      header.innerHTML =
+        "<nav><ul>" +
+        "<li><a>Accueil</a></li>" +
+        "<li><a>A propos</a></li>" +
+        "<li><a>Boutique</a></li>" +
+        "</ul></nav>";
+
+      // ajouter (ou modifier) des attributs HTML
+      header.setAttribute("id", "page-menu");
+      header.setAttribute("petit-dejeuner", "croissants et jus d'orange");
+      header.setAttribute("title", "je m'affiche au survol de la balise");
+
+      var h1 = document.body.children[0];
+      document.body.insertBefore(header, h1);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple 10</title>
+    <script>
+        var calcul = function (un, deux) {
+            var resultat = un * un + deux;
+            alert(resultat);
+        };
+
+        // calcul(10,20);
+
+        var nombres = [17, 34, 25, 17, 56, 13];
+        /*
+            Au lieu de faire ces actions :
+            calcul(nombres[0],nombres[1]);
+            calcul(nombres[2],nombres[3]);
+            calcul(nombres[4],nombres[5]);
+            il est possible d'utiliser une boucle :
+        */
+        for (var i = 0; i < 6; i = i + 2) {
+            // calcul(nombres[i],nombres[i+1]);
+        }
+
+        var division = function (premier, second) {
+            var resultat = premier / second;
+            alert(resultat);
+        }
+
+        var actionMath = function (nomOutil, unTableau) {
+            for (var i = 0; i < 6; i = i + 2) {
+                nomOutil(unTableau[i], unTableau[i + 1]);
+            }
+        };
+
+        actionMath(division, [19, 2, 46, 7, 98, 4]);
+        actionMath(calcul, [4, 23, 16, 2, 9, 18]);
+
+
+        // En plus simple
+
+        var outil = function (message) {
+            alert(message);
+        };
+
+        var action = function (element) {
+            var texte = 'Coucou';
+            element(texte);
+        };
+
+        action(outil);
+    </script>
+</head>
+
+<body>
+    <h1>Exemple 10</h1>
+</body>
+
+</html>

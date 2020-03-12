@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="480" height="320"></canvas>
+
+    <script>
+      var canvas = document.getElementById("canvas");
+      var context = canvas.getContext("2d");
+      var x = 0;
+
+      function boucle() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = "red";
+        context.strokeStyle = "green";
+        /*
+            un rectangle est repéré par les coordonnées de son coin supérieur gauche, ainsi que ses dimensions :
+            - côté gauche (x)
+            - côté du haut (y)
+            - largeur (w)
+            - hauteur (h)
+        */
+        context.fillRect(x /* x */, 200 /* y */, 50 /* w */, 100 /* h */);
+
+        x += 1;
+
+        requestAnimationFrame(boucle);
+      }
+
+      boucle();
+
+      //   setInterval(boucle, 1000 / 60);
+    </script>
+  </body>
+</html>

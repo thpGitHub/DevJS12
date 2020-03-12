@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple 7</title>
+    <script>
+        // Les variables
+        var maVariable;
+        var stock = 158;
+        maVariable = 'Texte';
+        stock = 47;
+        var troisiemeVariable = maVariable;
+
+        // Types de données
+            // chaînes de caractères
+            'Bonjour à tous';
+            var unePhrase = 'Il fait assez beau aujourd\'hui';
+            // nombres
+            15;
+            -8536;
+            78.36;
+            // booléens
+            true;
+            false;
+            // tableaux
+            var monTableau = ['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'];
+            monTableau[3];// donne 'jeudi'
+            var autreTableau = ['coucou',15,-19.3,true];
+
+        // Modulo
+            // Donne le reste de la division exacte la plus proche (qui donne un entier)
+            89 % 15; // donne 14
+            26 % 5; // donne 1
+
+        // Comparaisons
+            15 == 8; // false
+            'Coucou' == 'Cou' + 'cou';
+            45 > 17; // true
+            9 != 4 + 3; // true
+            !true; // false
+            var leNombre = 19;
+            leNombre >= 12 + 7; // true
+
+        // Conditions
+        var unAutreNombre = 89;
+        if (unAutreNombre > 18) {
+            // on entre ici si unAutreNombre est supérieur à 89
+        }
+
+        if (!(unAutreNombre % 2)) {
+            // on entre ici si unAutreNombre est pair
+                // -> si nous sommes en présence d'un nombre pair, ce nombre modulo 2 donne 0.
+                // -> or 0 équivaut à false. Pour "entrer" dans le if, il faut inverser la condition avec !
+            alert('Nombre pair');
+        } else {
+            // on entre ici si unAutreNombre est impair
+            alert('Nombre impair');
+        }
+
+        // Combinateurs
+        var uneInformation = 'matin';
+        if (typeof(uneInformation) == 'string' && uneInformation == 'matin') {
+
+        }
+
+        var fruits = ['fraise','abricot','orange'];
+
+        if (fruits[0] == 'fraise' && fruits[2]) {
+            // On entre si le tableau contient 'fraise' au premier indice et contient au-minimum trois informations différentes
+        }
+
+        if (fruits[0] == 'fraise' || fruits[9]) {
+            // On entre si le tableau contient 'fraise' au premier indice OU / ET contient au-minimum dix informations différentes
+        }
+
+        // Manipulation de tableaux dans les tableaux
+
+        var pays = ['Allemagne','Pérou','France','Australie'];
+        pays[4] = ['Reims','Poitiers','Paris'];
+        /*
+            Cela donne :
+            pays = [
+                'Allemagne',
+                'Pérou',
+                'France',
+                'Australie',
+                ['Reims','Poitiers','Paris']
+            ];
+        */
+        alert(pays[2]); // affichera 'France'
+        alert(pays[4][1]); // affichera 'Poitiers'
+        pays[5] = 'Algérie';
+        /*
+            Cela donne :
+            pays = [
+                    'Allemagne',
+                'Pérou',
+                'France',
+                'Australie'
+                ['Reims','Poitiers','Paris'],
+                'Algérie'
+            ];
+        */
+        pays[4][3] = ['Auteuil','Belleville','Clignancourt','Vaugirard'];
+        /*
+            Cela donne :
+            pays = [
+                'Allemagne',
+                'Pérou',
+                'France',
+                'Australie',
+                [
+                    'Reims',
+                    'Poitiers',
+                    'Paris',
+                    [
+                        'Auteuil',
+                        'Belleville',
+                        'Clignancourt',
+                        'Vaugirard']
+                    ],
+                'Algérie'
+            ];
+        */
+        alert(pays[4][3][0]); // affichera 'Auteuil'
+
+        // Fonctions
+        var somme = function() {
+            var resultat = 18 + 12;
+            alert(resultat);
+        };
+
+        somme();
+        var outil = somme;
+        outil();
+
+        var information = function(unTexte) {
+            var phrase = 'Voici votre texte : ' + unTexte;
+            alert(phrase); 
+        }
+        information('Comment allez-vous ?');
+        information('C\'est le matin');
+
+        var division = function(nombreUn,nombreDeux) {
+            if (nombreDeux != 0) {
+                var resultat = nombreUn / nombreDeux;
+                alert(resultat);
+            }
+        };
+
+        division(18,3);
+
+        var divisionVariation = function(unTableau) {
+            if (unTableau[1] != 0) {
+                var resultatDivision = unTableau[0] / unTableau[1];
+                alert(resultatDivision);
+            }
+        };
+
+        divisionVariation([45,3]);
+
+        var messageBienvenue = function(prenom) {
+            var phrase = 'Bienvenue ' + prenom + ' !';
+            return phrase;
+        };
+        var retourPhrase = messageBienvenue('Marc');
+        alert(retourPhrase);
+    </script>
+</head>
+<body>
+    <h1>Exemple 7</h1>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus sapiente repellendus, illo hic quasi quos tempora animi vel dicta possimus soluta quaerat voluptate voluptatem, cum ut ullam quod consequatur amet.</p>
+</body>
+</html>

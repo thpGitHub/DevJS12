@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var prototypeDeVoiture = {
+        categorie: "voiture",
+        klaxonner: function() {
+          console.log("Tuu tuuuut");
+        },
+        rouler: function() {
+          console.log("vrouum vroouuuuum");
+        },
+        clignotant: function() {
+          console.log("clic clac clic clac");
+        },
+        voler: function() {
+          console.log("vvvvvvvvvVVVV");
+        }
+      };
+
+      // 1ère méthode DECONSEILLEE :
+      // Affecter une valeur à la propriété .__proto__
+      var titine = {
+        marque: "Coccinelle",
+        categorie: "citadine",
+        nombrePortes: 3,
+        __proto__: prototypeDeVoiture
+      };
+
+      // 2ème méthode DECONSEILLEE :
+      // modifier le prototype à l'aide de la fonction
+      // Objet.setPrototypeOf()
+      var bolide = {
+        marque: "Audi A1",
+        categorie: "berline de madame",
+        nombreDePortes: 5
+      };
+      Object.setPrototypeOf(bolide, prototypeDeVoiture);
+      console.log("bolide", bolide);
+
+      // 3ème et BONNE méthode :
+      // Plutôt que de modifier un objet, on crée un NOUVEL objet
+      // avec la méthode Object.create() en fournissant le
+      // prototype de l'objet renvoyé.
+      var k2000 = Object.create(prototypeDeVoiture, {
+        marque: {
+          value: "kit",
+          writable: true,
+          enumerable: true,
+          configurable: true
+        },
+        categorie: {
+          value: "futuristique",
+          writable: true,
+          enumerable: true,
+          configurable: true
+        },
+        nombreDePortes: {
+          value: 24,
+          writable: true,
+          enumerable: true,
+          configurable: true
+        }
+      });
+
+      // Design Pattern : Fonction Usine
+      // A pour rôle de créer des objets sur un même modèle
+      // à partir de propriétés fournies en argument.
+      function usineAVoiture(marque, categorie, portes) {
+        var voiture = Object.create(prototypeDeVoiture);
+        voiture.marque = marque;
+        voiture.categorie = categorie;
+        voiture.nombreDePortes = portes;
+
+        console.log(this);
+        return voiture;
+      }
+
+      //   window.usineAVoiture();
+      var titine = usineAVoiture("Coccinelle", "citadine", 3);
+    </script>
+  </body>
+</html>

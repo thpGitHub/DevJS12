@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boucle for...in</title>
+</head>
+<body>
+    <script>
+        var mario = {
+            nom: "Mario", // string
+            couleur: "rouge", // propriété de l'objet mario
+            grand: false, // boolean
+            vitesse: 2, // nombre
+            nombreDeVies: 5,
+            amis: ["Peach", "Luigi"], // tableau
+            sauter: function() { // fonction
+                console.log("JUMP!");
+            }, // méthode de l'objet mario
+            // UNE PROPRIETE CONTENANT UN OBJET ?
+            jeu: {
+                nom: "Super Mario Bros",
+                plateforme: "Wii"
+            },
+            gagnerUneVie: function() {
+                // this représente l'objet contenant la méthode.
+                // Ici, c'est l'objet mario.
+                this.nombreDeVies += 1;
+            }
+        }
+
+        /*
+            La boucle for...in permet de parcourir les propriétés d'un objet.
+
+            la variable cleDePropriete va prendre successivement pour valeur les noms de chacune des propriétés (aussi appelées clés) de l'objet mario.
+        */
+        for (var cleDePropriete in mario) {
+            var valeurDePropriete = mario[cleDePropriete];
+            console.log(cleDePropriete + ": " + valeurDePropriete);
+        }
+    </script>
+</body>
+</html>

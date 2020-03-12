@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var prototypeDePersonnage = {
+            perdreUneVie: function() {
+                this.vies -= 1;
+            },
+            gagnerUneVie: function() {
+                this.vies += 1;
+            },
+            sauter: function() {
+                console.log("JUMP")
+            },
+            accelerer: function() {
+                this.vitesse += 10;
+            }
+        }
+
+        /* 
+            Méthode 1
+        */
+        // Création d'objet à partir de son prototype
+        var mario = Object.create(prototypeDePersonnage);
+        
+        // Ajout des propriétés propres (own properties)
+        mario.vies = 1;
+        mario.poids = 10;
+        mario.vitesse = 10;
+        console.log("mario", mario);
+        console.log("propriétés propres", Object.getOwnPropertyNames(mario));
+
+        /* 
+            Méthode 2
+        */
+        var luigi = Object.create(prototypeDePersonnage, {
+            vies: {
+                value: 3,
+                configurable: false, // peut être supprimée ou redéfinie (par un descripteur de propriété)
+                writable: false, // peut être réaffectée
+                enumerable: false // peut être énumérée
+            },
+            vitesse: {
+                value: 10,
+                configurable: true, // peut être supprimée ou redéfinie (par un descripteur de propriété)
+                writable: true, // peut être réaffectée
+                enumerable: true // peut être énumérée
+            },
+        });
+
+        for (var clé in luigi) {
+            console.log("clé", clé);
+        }
+
+        // Ici, la propriété poids est considérée "configurable: true", "writable: true", "enumerable: true"
+        luigi.poids = 100;
+    </script>
+</body>
+</html>

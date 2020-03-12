@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premier Objet</title>
+</head>
+<body>
+    <script>
+        /*
+            RAPPEL
+            Noms de variables valides :
+            - caracètres alphanumériques (lettres, lettres accentuées, nombres sauf en début)
+            - caractères "_" et "$"
+            - ...c'est tout.
+        */
+        var élément1 = "Oui, correct.";
+        var _ = "underscore";
+        var un_nom_de_variable = "aussi correct";
+        var $ = "dollar";
+
+        /*
+            Noms de variables invalides :
+            - signes de ponctuation (, ; . " ' ! ? / \ - + etc.) et espaces
+            - nombre en début
+
+            var variable avec espaces = "NON";
+            var 99francs = "très bon livre";
+            var c'est-à-dire = "je ne sais pas";
+        */
+
+        // Notation tableau
+        var tableau = [1, 2, 3];
+
+        // Objet en "Notation Littérale"
+        var mario = {
+            "99": "un test de nom",
+            nom: "Mario", // string
+            couleur: "rouge", // propriété de l'objet mario
+            grand: false, // boolean
+            vitesse: 2, // nombre
+            nombreDeVies: 5,
+            amis: ["Peach", "Luigi"], // tableau
+            sauter: function() { // fonction
+                console.log("JUMP!");
+            }, // méthode de l'objet mario
+            // UNE PROPRIETE CONTENANT UN OBJET ?
+            jeu: {
+                nom: "Super Mario Bros",
+                plateforme: "Wii"
+            }
+        }
+
+        /*
+            LIRE une propriété
+        */
+        // syntaxe par défaut : notation "." (point)
+        console.log(mario.couleur); // "rouge"
+
+        // Ici, je peux utiliser la notation crocher mais ce n'est pas nécessaire
+        console.log(mario["nombreDeVies"]); // 5
+
+        mario.sauter(); // appeler une méthode
+
+        /*
+            MODIFIER une propriété
+        */
+        mario.grand = true;
+        
+        /*
+            AJOUTER un propriété
+        */
+        mario.etoiles = 1000; // j'ajoute une nouvelle propriété à l'objet mario
+
+        /*
+            SUPPRIMER une propriété
+            Je supprime la propriété que je viens d'ajouter pas la même chose que de passer la propriété à "undefined"
+        */
+        delete mario.etoiles;
+
+        /*
+            ATTENTION :
+            la fonction sauter() n'existe que sur l'objet mario défini au-dessus.
+            sauter(); // -> produit une erreur, la fonction n'existe pas en dehors de l'objet mario
+        */
+
+        var bibliothèque = {
+            "99francs": "très bon livre",
+            "harry potter": "livre pour tous âges",
+            "nomDeLivre": "Je ne contiens pas de livre..."
+        }
+        var nomDeLivre = "harry potter";
+
+        // Pour lire un nom de propriété invalide, je suis obligé de passer par la notation crochet.
+        bibliothèque["99francs"];
+        bibliothèque["harry potter"];
+        bibliothèque[nomDeLivre];
+        bibliothèque.nomDeLivre;
+    </script>
+</body>
+</html>

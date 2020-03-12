@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Les fonctions constructeurs pour chaque TYPE d'objet de mon jeu
+      function Game() {}
+      Game.prototype.start = function() {};
+      function Character() {}
+      Character.prototype.jump = function() {};
+      function Platform() {}
+      Platform.prototype.move = function() {};
+      function Ennemy() {}
+      Ennemy.prototype.attack = function() {};
+      function Level() {}
+      Level.prototype.load = function() {};
+
+      var game1 = new Game();
+      var characters = [new Character(), new Character()];
+      var levels = [new Level(), new Level()];
+
+      game1.characters = characters;
+      game1.levels = levels;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ciblage Précis</title>
+    <style></style>
+  </head>
+  <body>
+    <header
+      id="page-menu"
+      petit-dejeuner="croissants et jus d'orange"
+      title="je m'affiche au survol de la balise"
+    >
+      <nav class="menu">
+        <ul>
+          <li><a>Accueil</a></li>
+          <li><a>A propos</a></li>
+          <li><a>Boutique</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <h1>Cibler des éléments dans la page</h1>
+
+    <article>
+      <p class="chapitre">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, porro ex
+        iusto, maxime quos dolorem repellat fugit quia mollitia id, vel quaerat
+        sapiente inventore sunt. Provident minima reprehenderit nam porro.
+      </p>
+      <p class="chapitre">
+        Inventore aut enim cumque obcaecati eos assumenda voluptas corporis quo
+        rem necessitatibus vero aspernatur rerum unde incidunt iste,
+        eligendi</a>
+        vitae, eveniet amet sed deleniti exercitationem maiores reprehenderit
+        molestias quibusdam? Nulla.
+      </p>
+      <p class="chapitre">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio
+        atque vel repellendus nemo voluptas! Omnis sit accusantium in?
+        Dignissimos aut magnam facilis vero. Quaerat molestiae aperiam vitae,
+        laborum minus cum.
+      </p>
+      <a id="un-lien" href="https://www.google.com/">Aller vers Google</a>
+    </article>
+
+    <script>
+      /*
+        MAUVAISE méthode :
+        Fastidieux et prompt aux erreurs, par exemple, si le balisage de la page a changé.
+
+        var a = document.body.children[1].children[1].children[0];
+      */
+
+      /*
+        BONNE(S) méthode(s) :
+      */
+
+      // Cibler un élément UNIQUE par son ID
+      var a = document.getElementById("un-lien");
+
+      // Cibler les éléments par leur nom de balise
+      var lesParagraphes = document.getElementsByTagName("p");
+
+      for (var i = 0; i < lesParagraphes.length; i++) {
+        var paragraphe = lesParagraphes[i];
+
+        paragraphe.textContent = "Paragraphe n°" + i;
+      }
+
+      // Cibler les éléments par leur classe
+      var tousLesMenus = document.getElementsByClassName("menu");
+
+      /*
+        NOUVELLE méthode MODERNE pour cibler des éléments (ATTENTION au support dans les vieux navigateurs)
+
+        Les 2 méthodes suivantes prennent en argument une chaîne de caractères respectant la syntaxe des sélecteurs CSS :
+        - document.querySelector()
+        - document.querySelectorAll()
+      */
+
+      // Renvoyer le premier élément HTML correspondant
+      var premierParagraphe = document.querySelector("p"); // première balise "p" rencontrée dans la page
+      console.log(premierParagraphe);
+
+      var unLienAvecID = document.querySelector("a#un-lien");
+      var deuxiemeParagraphe = document.querySelector(
+        "body > article > p:nth-child(2)"
+      );
+      console.log(deuxiemeParagraphe);
+
+      var liensVersGoogle = document.querySelectorAll(
+        "a[href = 'https://www.google.com/']"
+      );
+      console.log("liensVersGoogle", liensVersGoogle);
+
+      // Renvoyer TOUS les éléments HTML correspondant
+      var chapitres = document.querySelectorAll(".chapitre");
+
+      // Possibilité d'itérer sur les éléments avec .forEach()
+      console.log("LES CHAPITRES");
+      chapitres.forEach(function(chapitre, index, self) {
+        console.log("les chapitres", self);
+        console.log(chapitre, index);
+      })
+
+      /*
+        2 façons de cibler un élément par son ID
+      */
+      var titreDeSection = document.getElementById("titre-section");
+      var titreDeSection2 = document.querySelector("#titre-section");
+    </script>
+  </body>
+</html>

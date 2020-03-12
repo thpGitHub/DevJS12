@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./jquery.js"></script>
+    <script>
+      // IIFE
+      // Immediately Invoked Function Expression
+      // (Expression de Fonction Immédiatement Invoquée)
+      // Son rôle est de créer un contexte local pour toutes les variables de mon programme.
+      (function() {
+        // var joueur = 1;
+        var joueur1 = {
+          symbole: "X"
+        };
+        var joueur2 = {
+          symbole: "O"
+        };
+        var joueur = joueur1;
+
+        var grille = [];
+        for (var i = 0; i < 3; i++) {
+          grille[i] = ["", "", ""];
+        }
+        console.log(grille);
+        console.log("Tour du joueur ", joueur);
+
+        function jouer(ligne, colonne) {
+          // var symbole;
+
+          // "Vérifier que la case à la ligne et la colonne donnée NE VAUT PAS '' (chaîne de caractère vide)"
+          if (
+            ligne < 3 &&
+            colonne < 3 &&
+            ligne >= 0 &&
+            colonne >= 0 &&
+            !grille[ligne][colonne]
+          ) {
+            // symbole = (joueur === 1 ? "X" : "O");
+            // grille[ligne][colonne] = symbole;
+
+            grille[ligne][colonne] = joueur.symbole;
+            joueur = joueur === joueur1 ? joueur2 : joueur1;
+          } else {
+            console.log("Cette case a déjà été jouée !");
+          }
+          console.log(grille);
+          console.log("Tour du joueur ", joueur);
+        }
+      })();
+    </script>
+    <script>
+      joueur1 = "toto";
+    </script>
+  </body>
+</html>

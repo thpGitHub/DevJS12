@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple 12</title>
+    <script>
+        // Récursion, mécanisme de base :
+        var compteur = 0;
+        var action = function() {
+            alert(compteur);
+            compteur++;
+            if (compteur < 4) {
+                action();
+            }
+        };
+        action();
+
+        // Récursion avec usage d'un argument :
+        var  repetition = function(unNombre) {
+            alert(unNombre);
+            unNombre++;
+            if (unNombre < 4) {
+                repetition(unNombre);
+            }
+        };
+        
+        //repetition(0);
+
+        // Utilisation d'un return pour arrêter la fonction
+        var  repetition = function(unNombre) {
+            alert(unNombre);
+            unNombre++;
+            if (unNombre > 20) {
+                return;
+            }
+            repetition(unNombre);
+        };
+        
+        //repetition(16);
+    </script>
+</head>
+<body>
+    <h1>Exemple 12</h1>
+</body>
+</html>

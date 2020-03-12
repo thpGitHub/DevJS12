@@ -1,0 +1,24 @@
+body {
+  background-color: white;
+}
+
+noscript p {
+  background-color: red;
+  color: #fff;
+  padding: 20px;
+  position: fixed;
+  left: calc(50% - 125px);
+  text-align: center;
+  width: 250px;
+  z-index: 100;
+}
+
+noscript div {
+  background-color: rgba(155,155,155,0.8);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 5;
+}

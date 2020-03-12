@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      div {
+        position: fixed;
+        width: 100px;
+        height: 100px;
+        background-color: tomato;
+      }
+      div:hover {
+        /* cursor: grab; */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="glisser-deposer"></div>
+
+    <script>
+      var div = document.getElementById("glisser-deposer");
+      var grabbed = false;
+      var sourisX;
+      var sourisY;
+
+      div.addEventListener("mousedown", function(evenement) {
+        sourisX = evenement.clientX;
+        sourisY = evenement.clientY;
+        console.log("sourisX", sourisX);
+        console.log("sourisY", sourisY);
+        document.body.style.cursor = "grabbing";
+        // div.style.cursor = "grabbing";
+        grabbed = true;
+      });
+      window.addEventListener("mousemove", function(evenement) {
+        if (grabbed) {
+          var deplacementX = evenement.clientX - sourisX;
+          var deplacementY = evenement.clientY - sourisY;
+          sourisX = evenement.clientX;
+          sourisY = evenement.clientY;
+
+          var stylesCalcules = window.getComputedStyle(div);
+          var topCalcule = stylesCalcules.top;
+          var leftCalcule = stylesCalcules.left;
+          var top = parseInt(topCalcule);
+          var left = parseInt(leftCalcule);
+          //   console.log("top", top);
+          //   console.log("left", left);
+
+          left = left + deplacementX;
+          top = top + deplacementY;
+
+          div.style.top = top + "px";
+          div.style.left = left + "px";
+        }
+      });
+      window.addEventListener("mouseup", function(evenement) {
+        console.log("RELEASE");
+        document.body.style.cursor = "";
+        grabbed = false;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>JavaScript : Exercice 38</title>
+		<script type="text/javascript">
+			/*********************************
+			*************EXERCICE*************
+			**********************************
+				Réécrivez l'exercice précédent en utilisant une boucle for (avec tableau['length']);
+			*/
+			let table = [];
+      let f = () => {
+		let j=0;
+		table[j] = prompt("Entrez un nombre, sinon cliquez sur Annuler");
+		  while (table[j]) {
+			table[j+1] = prompt("Entrez un nombre, sinon cliquez sur Annuler");
+			j++;
+		  }
+		  table.pop();
+		  
+        let sum = 0;
+        for (let i = 0; i < table.length; i++) {
+		  sum = sum + parseFloat(table[i]);
+        }
+		let mean = sum / table.length;
+        return alert("La moyenne est égale à " + mean);
+      };
+		</script>
+	</head>
+	<body>
+		<h1>Mon nouveau document</h1>
+		<p onclick="f()">Premier paragraphe</p>
+		<p>Deuxième paragraphe</p>
+		<noscript>
+			<p>Veuillez activer JavaScript</p>
+		</noscript>
+	</body>
+</html>

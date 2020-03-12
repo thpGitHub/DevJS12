@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            Variables globales, existent en tant que propriétés de l'objet (global) window.
+        */
+        var prenom = "Sherlock";
+        var nom = "Holmes";
+
+        function sePresenter() {
+            // console.log(agentSecret.prenom);
+            console.log(window.prenom);
+            console.log(window.nom); // -> aucune variable appelée nom dans le programme
+            console.log(this);
+            console.log(this.nom + ", je m'appelle " + this.prenom + " " + this.nom + "."); // "Bond, je m'appelle James Bond."
+        }
+
+        var agentSecret = {
+            prenom: "James",
+            nom: "Bond",
+            surnom: "007",
+            petitesAmies: [],
+            sePresenter: sePresenter
+        };
+        var agentTresSecret = {
+            // prenom: "Jason",
+            // nom: "Bourne",
+            surnom: "JB",
+            petitesAmies: [],
+            sePresenter: sePresenter
+        };
+
+        agentSecret.sePresenter();
+        agentTresSecret.sePresenter();
+
+        var filmAction = {
+            titre: "Les diamants sont éternels",
+            heros: {
+                prenom: "James",
+                nom: "Bond",
+                direTitre: function() {
+                    console.log("titre : ", this.titre); // la propriété "titre" est absente de l'objet filmAction.heros et vaudra de ce fait undefined.
+                }
+            }
+        }
+    </script>
+</body>
+</html>

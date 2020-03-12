@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clic et création d'éléments</title>
+  </head>
+  <body>
+    <script>
+      var BOUTON_GAUCHE = 0;
+      var BOUTON_MILIEU = 1;
+      var BOUTON_DROIT = 2;
+      var IMG_URL =
+        "https://cdn.mos.cms.futurecdn.net/vChK6pTy3vN3KbYZ7UU7k3-970-80.jpg";
+
+      window.addEventListener("contextmenu", function(evenement) {
+        evenement.preventDefault();
+      });
+
+      window.addEventListener("mousedown", function(evenement) {
+        // Empêche le comportement "normal" lié à l'événement (par exemple, ne pas ouvrir de menu contextuel au clic droit de la souris)
+        evenement.preventDefault();
+
+        var x = evenement.clientX;
+        var y = evenement.clientY;
+
+        switch (evenement.button) {
+          case BOUTON_GAUCHE: {
+            var image = document.createElement("img");
+            // image.src =
+            //   "https://cdn.mos.cms.futurecdn.net/vChK6pTy3vN3KbYZ7UU7k3-970-80.jpg";
+            image.setAttribute("src", IMG_URL);
+            image.width = "50";
+
+            image.style.position = "fixed";
+            image.style.top = y + "px";
+            image.style.left = x + "px";
+            image.style.transform = "translate(-50%, -50%)";
+
+            document.body.appendChild(image);
+            break;
+          }
+          case BOUTON_DROIT: {
+            // la propriété evenement.target représente l'élément de la page qui a reçu LE PREMIER l'événement (c'est la cible de l'événement)
+            var elementCible = evenement.target;
+            console.log("target", elementCible);
+            var parent = elementCible.parentElement;
+
+            if (parent !== null) {
+              parent.removeChild(elementCible);
+            }
+
+            break;
+          }
+          default:
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>

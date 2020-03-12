@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // On crée une balise de type "div" et on l'insère dans la page
+      var div = document.createElement("div");
+      document.body.append(div);
+
+      // Ajout de styles en ligne via un attribut "style"
+      //   div.setAttribute("style", "width: 100px;");
+
+      // TOUS les styles en ligne de la div
+      console.log(div.style);
+
+      // On vient modifier le style (en ligne) de la balise "div" en passant par sa propriété .style
+      div.style.height = "50px";
+      div.style.backgroundColor = "red";
+
+      console.log("div.style.width", div.style.width);
+
+      var computedStyles = getComputedStyle(div);
+      var computedWidth = computedStyles.width;
+      var width = parseInt(computedWidth);
+      console.log(width);
+
+      // On affecte la nouvelle valeur (convertie en px) sous forme de style en ligne
+      div.style.width = width + 20 + "px";
+    </script>
+  </body>
+</html>

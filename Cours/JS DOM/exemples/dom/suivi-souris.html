@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      #zone-de-jeu {
+        position: relative;
+        width: 400px;
+        height: 300px;
+        background-color: #ddd;
+        margin-left: 150px;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="zone-de-jeu">
+      <div id="debug"></div>
+    </div>
+
+    <script>
+      var zoneDeJeu = document.getElementById("zone-de-jeu");
+      var debug = document.getElementById("debug");
+
+      zoneDeJeu.addEventListener("mousemove", function(evenement) {
+        console.log(evenement);
+
+        /*
+            La méthode .getBoundingClientRect() permet de récupérer les coordonnées d'une "boîte englobante" confondue avec l'élément correspondant.
+            
+            Cette "boîte englobante" est repérée par rapport à la zone d'affichage du navigateur (viewport).
+
+            Doc : https://developer.mozilla.org/fr/docs/Web/API/Element/getBoundingClientRect
+        */
+        var rectangleEnglobant = zoneDeJeu.getBoundingClientRect();
+
+        var x = evenement.clientX - rectangleEnglobant.x;
+        var y = evenement.clientY - rectangleEnglobant.y;
+        debug.textContent = "x: " + x + " y: " + y;
+      });
+    </script>
+  </body>
+</html>

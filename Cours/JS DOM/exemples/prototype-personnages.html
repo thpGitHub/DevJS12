@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Mario Kart
+        var prototypeDePersonnage = {
+            perdreUneVie: function() {
+                this.vies -= 1;
+            },
+            gagnerUneVie: function() {
+                this.vies += 1;
+            },
+            sauter: function() {
+                console.log("JUMP")
+            },
+            accelerer: function() {
+                this.vitesse += 10;
+            }
+        }
+
+        var mario = {
+            vies: 1,
+            poids: 10,
+            vitesse: 10,
+            __proto__: prototypeDePersonnage
+        }
+        var luigi = {
+            vies: 2,
+            poids: 8,
+            vitesse: 10,
+            __proto__: prototypeDePersonnage
+        }
+        var peach = {
+            vies: 3,
+            poids: 5,
+            vitesse: 10,
+            __proto__: prototypeDePersonnage
+        }
+    </script>
+</body>
+</html>

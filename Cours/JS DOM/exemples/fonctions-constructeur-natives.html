@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Object
+      console.dir(Object);
+
+      var objet1 = new Object();
+
+      console.log(objet1);
+
+      // Array
+      var colors = ["rouge", "vert", "bleu"];
+      var colors2 = new Array("rouge", "vert", "bleu");
+
+      console.log(colors.indexOf("vert"));
+
+      // Ajouter par la fin
+      colors.push("jaune");
+
+      // Ajouter par le début
+      colors.unshift("rose");
+
+      // Supprimer par la fin
+      colors.pop();
+
+      // Supprimer par le début
+      colors.shift();
+
+      // .map() renvoie un nouveau tableau à partir du tableau de départ.
+      var newColors = colors.map(function(couleursCourante) {
+        console.log(couleursCourante); // chaîne de caractères
+        var couleurEnMajuscule = couleursCourante.toUpperCase();
+        return couleurEnMajuscule;
+      });
+
+      console.log(colors);
+      console.log("isArray()", Array.isArray([1, 2, 3]));
+
+      // Function
+      var maFonction = new Function("console.log(this.nom);");
+      function direNom(a, b) {
+        console.log("Je m'appelle " + this.nom);
+        console.log(a, b);
+      }
+
+      // .call permet de fournir une valeur définie pour `this`.
+      direNom.call({ nom: "Personne" }, 10, 20);
+
+      direNom.apply({ nom: "Personne" }, [10, 20]);
+
+      var direToujoursLeMemeNom = direNom.bind({ nom: "Personne" });
+      direToujoursLeMemeNom(10, 20);
+      var personne = {
+        nom: "Toto",
+        direNom: direToujoursLeMemeNom
+      };
+    </script>
+  </body>
+</html>

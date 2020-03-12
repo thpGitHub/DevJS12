@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajouter et retirer des éléments de la page</title>
+  </head>
+  <body>
+    <h1>Ajouter et retirer des éléments de la page</h1>
+
+    <section>
+      <h2 id="titre-section">Première section</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores
+        minus maxime, recusandae harum consectetur corrupti neque, maiores
+        veniam, fuga voluptatibus perferendis voluptatum. Rerum ipsam, obcaecati
+        repellendus expedita minima error excepturi.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus fugiat id
+        esse laudantium praesentium facere nulla, aliquid iure natus soluta
+        doloribus, dolore quibusdam deleniti, ratione expedita nam harum in
+        accusantium?
+      </p>
+    </section>
+
+    <script>
+      var premierParagraphe = document.querySelector("p");
+
+      console.log(
+        "premierParagraphe.parentElement",
+        premierParagraphe.parentElement
+      );
+
+      // Retirer le premier paragraph du body
+      premierParagraphe.parentElement.removeChild(premierParagraphe);
+    </script>
+  </body>
+</html>

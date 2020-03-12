@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Descripteurs de propriétés</title>
+  </head>
+  <body>
+    <script>
+      var objet = {}; // contient juste une prorpriété __proto__
+
+      // ici ma propriété est énumérable, modifiable et supprimable
+      Object.defineProperty(objet, "couleur", {
+        value: "rouge",
+        enumerable: false
+      });
+
+      Object.defineProperties(objet, {
+        taille: {
+          value: 10,
+          configurable: true,
+          writable: true,
+          enumerable: false
+        },
+        vitesse: {
+          configurable: true,
+          writable: true,
+          enumerable: false
+        }
+      });
+
+      console.log(objet);
+
+      var cercle = {
+        rayon: 10,
+        x: 0,
+        y: 0
+      };
+      /*
+        La propriété "circonference" :
+        - est calculée à partir de la valeur d'autres propriétés (de l'objet cercle)
+        - a la capacité de changer la valeur d'autres propriétés (de l'objet cercle) lorsqu'on lui affecte une nouvelle valeur.
+      */
+      Object.defineProperty(cercle, "circonference", {
+        get: function() {
+          // renvoie la valeur de la circonférence à partir de la valeur courante du rayon
+          return this.rayon * Math.PI * 2;
+        },
+        set: function(nouvelleCirconference) {
+          // met à jour la valeur du rayon à partir de la nouvelle valeur de la circonférence
+          this.rayon = nouvelleCirconference / (2 * Math.PI);
+        }
+      });
+
+      var cercle = Object.create(
+        {},
+        {
+          rayon: {
+            // descripteur de données
+            value: 10,
+            configurable: true,
+            writable: true,
+            enumerable: true
+          },
+          x: {
+            // descripteur de données
+            value: 0,
+            configurable: true,
+            writable: true,
+            enumerable: true
+          },
+          y: {
+            // descripteur de données
+            value: 0,
+            configurable: true,
+            writable: true,
+            enumerable: true
+          },
+          circonference: {
+            // descripteur d'accesseur
+            get: function() {
+              // renvoie la valeur de la circonférence à partir de la valeur courante du rayon
+              return this.rayon * Math.PI * 2;
+            },
+            set: function(nouvelleCirconference) {
+              // met à jour la valeur du rayon à partir de la nouvelle valeur de la circonférence
+              this.rayon = nouvelleCirconference / (2 * Math.PI);
+            }
+          }
+        }
+      );
+    </script>
+  </body>
+</html>

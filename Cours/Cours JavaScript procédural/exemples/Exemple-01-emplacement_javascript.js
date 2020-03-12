@@ -1,0 +1,1 @@
+alert('Dans un fichier externe');

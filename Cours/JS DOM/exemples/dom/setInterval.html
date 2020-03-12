@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .horloge {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background-color: tomato;
+      }
+
+      .horloge::before {
+        content: "";
+        width: 5%;
+        height: 5%;
+        background-color: white;
+        border-radius: 50%;
+      }
+
+      .aiguille {
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        transform-origin: center bottom;
+        background-color: yellow;
+      }
+
+      .aiguille.heures {
+        width: 5%;
+        height: 30%;
+        transform: translateX(-50%);
+      }
+      .aiguille.minutes {
+        width: 3%;
+        height: 40%;
+        transform: translateX(-50%);
+      }
+      .aiguille.secondes {
+        width: 1%;
+        height: 40%;
+        transform: translateX(-50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="horloge" class="horloge">
+      <div id="heures" class="aiguille heures"></div>
+      <div id="minutes" class="aiguille minutes"></div>
+      <div id="secondes" class="aiguille secondes"></div>
+    </div>
+
+    <script>
+      (function() {
+        var horloge = document.getElementById("horloge");
+        var aiguilleHeures = document.querySelector("#heures");
+        var aiguilleMinutes = document.querySelector("#minutes");
+        var aiguilleSecondes = document.querySelector("#secondes");
+
+        console.log(aiguilleHeures);
+        console.log(aiguilleMinutes);
+        console.log(aiguilleSecondes);
+
+        function nombreAleatoire(max) {
+          return Math.floor(Math.random() * (max + 1));
+        }
+
+        function mettreAJourHorloge() {
+          var maintenant = new Date();
+          var heures = maintenant.getHours(); // 0h - 24h
+          var minutes = maintenant.getMinutes();
+          var secondes = maintenant.getSeconds();
+          var degreRotationHeures = (360 / 12) * heures;
+          var degreRotationMinutes = (360 / 60) * minutes;
+          var degreRotationSecondes = (360 / 60) * secondes;
+          var transformHeures =
+            "translateX(-50%) rotate(" + degreRotationHeures + "deg)";
+          var transformMinutes =
+            "translateX(-50%) rotate(" + degreRotationMinutes + "deg)";
+          var transformSecondes =
+            "translateX(-50%) rotate(" + degreRotationSecondes + "deg)";
+          //   var r = Math.floor((heures / 24) * 255); // 0 - 255
+          //   var g = Math.floor((minutes / 60) * 255); // 0 - 255
+          //   var b = Math.floor((secondes / 60) * 255); // 0 - 255
+          var r = nombreAleatoire(255);
+          var g = nombreAleatoire(255);
+          var b = nombreAleatoire(255);
+          console.log(r);
+          console.log(g);
+          console.log(b);
+
+          aiguilleHeures.style.transform = transformHeures;
+          aiguilleMinutes.style.transform = transformMinutes;
+          aiguilleSecondes.style.transform = transformSecondes;
+          horloge.style.backgroundColor =
+            "rgb(" + r + ", " + g + ", " + b + ")";
+        }
+
+        mettreAJourHorloge();
+
+        setInterval(mettreAJourHorloge, 1000);
+      })();
+    </script>
+  </body>
+</html>

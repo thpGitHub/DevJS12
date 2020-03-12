@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <h2>Méthode 1 / 2 : attributs d'événement</h2>
+      <p id="paragraphe1" onclick="console.log('clic en ligne')">
+        CLIQUEZ-MOI
+      </p>
+    </section>
+
+    <section>
+      <h2>Méthode 3 : <code>.addEventListener()</code></h2>
+      <p id="paragraph2">
+        Paragraphe 2 <br />
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
+        blanditiis vero expedita eligendi inventore ipsam saepe accusamus animi
+        laborum totam!
+      </p>
+    </section>
+
+    <div
+      style="width: 500px; height: 1000px; background-image: linear-gradient(red, yellow);"
+      onmouseup="console.log('bouton de la souris appuyé. Promis !')"
+      onmouseover="console.log('ENTREE')"
+      onmouseout="console.log('SORTIE'); "
+    ></div>
+
+    <script>
+      // Méthode 1 : attributs d'événement en ligne
+      var nombreDeClics = 0;
+
+      function gestionDuClicSurLeParagraphe() {
+        console.log("Vous avez cliqué sur le paragraphe");
+        nombreDeClics++;
+        console.log(nombreDeClics);
+      }
+
+      // Méthode 2 : attributs d'événement du DOM
+      var premierParagraphe = document.getElementById("paragraphe1");
+
+      console.log(premierParagraphe.onclick);
+
+      // On réaffecte la propriété .onclick avec un gestionnaire d'événement pour l'événement de type "click"
+      window.onclick = function(evenement) {
+        console.log(
+          "vous avez cliqué aux coordonnées (CLIENT):",
+          evenement.clientX,
+          evenement.clientY
+        );
+        console.log(
+          "vous avez cliqué aux coordonnées (PAGE) :",
+          evenement.pageX,
+          evenement.pageY
+        );
+        nombreDeClics++;
+        console.log("CLIC", nombreDeClics);
+      };
+
+      window.onscroll = function(evenement) {
+        // console.log(evenement);
+        console.log("SCROLL");
+      };
+
+      premierParagraphe.id;
+
+      // Méthode 3 : .addEventListener()
+      var deuxiemeParagraphe = document.getElementById("paragraph2");
+      console.log(deuxiemeParagraphe);
+
+      function gestionnaireDeClic1(evenement) {
+        console.log("clic sur le 2e paragraphe");
+      }
+      function gestionnaireDeClic2(evenement) {
+        console.log("ATTENTION ON SE REPETE");
+      }
+
+      deuxiemeParagraphe.addEventListener("click", gestionnaireDeClic1);
+      deuxiemeParagraphe.addEventListener("click", gestionnaireDeClic2);
+
+      // deuxiemeParagraphe.removeEventListener("click", function(evenement) {
+      //   console.log("clic sur le 2e paragraphe");
+      // });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Exemple 6</title>
+    <script>
+        var uneFonction = function() {
+            var stock = 'Bonjour à tous';
+            alert(stock);
+        };
+        uneFonction();
+
+        var somme = function(unNombre) {
+            var resultat = unNombre + 2;
+            alert(resultat);
+        };
+        somme(10);
+
+        var multiplication = function(un,deux) {
+            var total = un * deux;
+            alert(total);
+        };
+        multiplication(7,94);
+
+        var message = function() {
+            var unTexte = 'Voici le message';
+            return unTexte;
+        };
+
+        var valeurDeRetour = message();
+        alert(valeurDeRetour); 
+    </script>
+</head>
+<body>
+    <h1>Exemple 6</h1>
+</body>
+</html>

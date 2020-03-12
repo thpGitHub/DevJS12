@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function direTitre() {
+            console.log("titre : ", this.titre); // la propriété "titre" est absente de l'objet filmAction.heros et vaudra de ce fait undefined.
+        }
+
+        // prototype fait office d'ancêtre commun pour les deux films fimlAction et filmAnimation.
+        var prototype = {
+            titre: "Piège de Crystal", // propriété héritée
+            direTitre
+        }
+
+        var filmAction = {
+            titre: "Les diamants sont éternels", // propriété propre (own property)
+
+            __proto__: prototype
+        }
+
+        var filmAnimation = {
+            __proto__: prototype
+        }
+    </script>
+</body>
+</html>

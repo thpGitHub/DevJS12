@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 4000px;
+        background-image: linear-gradient(red, yellow);
+      }
+      div {
+        position: fixed;
+        width: 200px;
+        height: 200px;
+        top: 100px;
+        left: 100px;
+        background-color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tourner"></div>
+    <script>
+      var scroll = window.scrollY;
+      var div = document.getElementById("tourner");
+
+      window.addEventListener("scroll", function(event) {
+        var nouveauScroll = window.scrollY;
+        var deltaScroll = nouveauScroll - scroll;
+        console.log("deltaScroll", Math.round(deltaScroll));
+        scroll = nouveauScroll;
+
+        div.style.transform = "rotateZ(" + scroll + "deg)";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Le DOM</h1>
+
+    <article>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae
+        distinctio doloribus rem minima fuga ipsa aperiam laborum esse ipsam
+        facere, dicta pariatur unde quaerat suscipit, consequatur autem
+        reprehenderit sint voluptates.
+      </p>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non architecto
+        similique deserunt quia enim impedit fuga harum maiores corporis saepe,
+        quisquam possimus officia dolorem porro, sunt eveniet quis dolorum!
+        Facere.
+      </p>
+    </article>
+
+    <ul>
+      <li>Lorem, ipsum dolor.</li>
+      <li>Incidunt, earum libero?</li>
+      <li>Voluptatibus, quibusdam itaque.</li>
+    </ul>
+
+    <script>
+      console.dir(window.document);
+      var secondParagraphe = document.body.children[1].children[1];
+      console.dir(secondParagraphe);
+      secondParagraphe.textContent = "Nouveau contenu de ma balise <p>";
+
+      console.log(body.innerHtml);
+
+      // Attention, le balisage est transformé en texte par la propriété .textContent
+      document.body.textContent = "<div>du texte contenu dans une div</div>";
+
+      // Pour conserver le balisage, on utilise .innerHTML
+      document.body.innerHTML = "<div>du texte contenu dans une div</div>";
+    </script>
+  </body>
+</html>
