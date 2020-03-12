@@ -18,8 +18,113 @@
       var context = canvas.getContext("2d");
       var x = 0;
 
+      function Joueur(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.speed = 5;
+      }
+
+      Joueur.prototype.courir = function() {
+        this.speed = 20;
+      };
+      Joueur.prototype.marcher = function() {
+        this.speed = 5;
+      };
+
+      var joueur = new Joueur(0, 0, 100, 100);
+      //   var joueur = {
+      //     x: 0,
+      //     y: 0,
+      //     width: 100,
+      //     height: 100
+      //   };
+
+      var touches = {
+        ArrowLeft: false,
+        ArrowRight: false,
+        ArrowUp: false,
+        ArrowDown: false,
+        shift: false
+      };
+
+      window.addEventListener("keydown", function(evenement) {
+        console.log("evenement.code", evenement.code);
+        // Récupération des coordonnées et conversion en nombre
+        switch (evenement.code) {
+          case "ArrowLeft":
+            touches.ArrowLeft = true;
+            break;
+          case "ArrowRight":
+            touches.ArrowRight = true;
+            break;
+          case "ArrowUp":
+            touches.ArrowUp = true;
+            break;
+          case "ArrowDown":
+            touches.ArrowDown = true;
+            break;
+          case "ShiftLeft":
+            touches.shift = true;
+            break;
+        }
+      });
+
+      window.addEventListener("keyup", function(evenement) {
+        switch (evenement.code) {
+          case "ArrowLeft":
+            touches.ArrowLeft = false;
+            break;
+          case "ArrowRight":
+            touches.ArrowRight = false;
+            break;
+          case "ArrowUp":
+            touches.ArrowUp = false;
+            break;
+          case "ArrowDown":
+            touches.ArrowDown = false;
+            break;
+          case "ShiftLeft":
+            touches.shift = false;
+            break;
+        }
+      });
+
       function boucle() {
+        // 1ère étape : répondre aux interactions
+        if (touches.shift) {
+          joueur.courir();
+        } else {
+          joueur.marcher();
+        }
+
+        if (touches.ArrowLeft) {
+          if (joueur.x - joueur.speed >= 0) {
+            joueur.x -= joueur.speed;
+          }
+        }
+        if (touches.ArrowRight) {
+          if (joueur.x + joueur.width + joueur.speed <= canvas.width) {
+            joueur.x += joueur.speed;
+          }
+        }
+        if (touches.ArrowUp) {
+          if (joueur.y - joueur.speed >= 0) {
+            joueur.y -= joueur.speed;
+          }
+        }
+        if (touches.ArrowDown) {
+          if (joueur.y + joueur.height + joueur.speed <= canvas.height) {
+            joueur.y += joueur.speed;
+          }
+        }
+
+        // 2ème étape : mettre à jour coordonnées des objets du jeu
+
+        // 3ème étape Effacer canvas et redessiner
         context.clearRect(0, 0, canvas.width, canvas.height);
+
         context.fillStyle = "red";
         context.strokeStyle = "green";
         /*
@@ -29,11 +134,11 @@
             - largeur (w)
             - hauteur (h)
         */
-        context.fillRect(x /* x */, 200 /* y */, 50 /* w */, 100 /* h */);
+        context.fillRect(joueur.x, joueur.y, joueur.width, joueur.height);
 
         x += 1;
 
-        requestAnimationFrame(boucle);
+        setTimeout(boucle, 15);
       }
 
       boucle();
