@@ -4,55 +4,60 @@
     <meta charset="utf-8" />
     <title>jQuery : Exercice 04</title>
     <link rel="stylesheet" href="../src/styles1.css" />
+    <script src="../jquery.js"></script>
     <script>
       /*********************************
-			***********PRESENTATION***********
-			**********************************
-			jQuery permet de cibler des éléments en filtrant le DOM selon différents critères :
-			_ :not() : vise tous les éléments qui ne sont pas entre parenthèses.
-			_ :even : vise les éléments impairs.
-			_ :header : vise l'ensemble des titres (h1 à h6).
+      ***********PRESENTATION***********
+      **********************************
+      jQuery permet de cibler des éléments en filtrant le DOM selon différents critères :
+      _ :not() : vise tous les éléments qui ne sont pas entre parenthèses.
+      _ :even : vise les éléments impairs.
+      _ :header : vise l'ensemble des titres (h1 à h6).
 
-			L'ensemble des sélection par filtre se trouve ici :
-			http://api.jquery.com/category/selectors/basic-filter-selectors/
+      L'ensemble des sélection par filtre se trouve ici :
+      http://api.jquery.com/category/selectors/basic-filter-selectors/
 
-			La méthode css() permet de faire plusieurs modifications en passant les arguments à la méthode sous la forme d'un objet :
-				$('div').css({textAlign:'center',height:'250px'});
-			
-			Par ailleurs, jQuery offre un moyen d'exécuter du code après le chargement du document avec la commande suivante (cf. http://api.jquery.com/ready/) :
-			*/
+      La méthode css() permet de faire plusieurs modifications en passant les arguments à la méthode sous la forme d'un objet :
+      	$('div').css({textAlign:'center',height:'250px'});
+
+      Par ailleurs, jQuery offre un moyen d'exécuter du code après le chargement du document avec la commande suivante (cf. http://api.jquery.com/ready/) :
+      */
       $(function() {
         //code s'exécutant après le chargement du document
       });
 
       /*
-				Attention, il existe plusieurs façons d'utiliser certaines méthodes. Seule celle présente ci-dessus est à utiliser avec jQuery 3 (les autres sont dépréciées).
-			*/
+      	Attention, il existe plusieurs façons d'utiliser certaines méthodes. Seule celle présente ci-dessus est à utiliser avec jQuery 3 (les autres sont dépréciées).
+      */
 
       /**********************************
-			*************EXERCICES*************
-			***********************************
-			** 1 **
-			À la fin du chargement du document, dans le menu, mettez en minuscule toutes les entrées sauf ACCUEIL;
-				Utilisez :not() et css().
-			*/
+      *************EXERCICES*************
+      ***********************************
+      ** 1 **
+      À la fin du chargement du document, dans le menu, mettez en minuscule toutes les entrées sauf ACCUEIL;
+      	Utilisez :not() et css().
+      */
       $(function() {
-        $("nav > ul > li :not(:first-child)").css(
-          "text-transform",
-          "lowercase"
-        );
+        $("nav > ul > li:not(:first-child)").css("text-transform", "lowercase");
       });
       /*
-			** 2 **
-			À la fin du chargement du document, dans les sous-menu, changez la couleur de fond des éléments impairs.
-				Utilisez :even et css().
-			*/
-
+      ** 2 **
+      À la fin du chargement du document, dans les sous-menu, changez la couleur de fond des éléments impairs.
+      	Utilisez :even et css().
+      */
+      $(function() {
+        $("nav > ul > li > ul > li:even").css("background-color", "red");
+      });
       /*
-			** 3 **
-			À la fin du chargement du document, modifiez deux propriétés css des titres.
-				Utilisez :header et css().
-			*/
+      ** 3 **
+      À la fin du chargement du document, modifiez deux propriétés css des titres.
+           Utilisez :header et css().
+         */
+      $(function() {
+        $("h1, h2:header")
+          .css("color", "red")
+          .css("text-decoration", "underline");
+      });
     </script>
   </head>
   <body>

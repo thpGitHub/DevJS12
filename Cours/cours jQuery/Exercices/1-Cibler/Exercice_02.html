@@ -4,6 +4,7 @@
 		<meta charset="utf-8"/>
 		<title>jQuery : Exercice 02</title>
 		<link rel="stylesheet" href="../src/styles1.css">
+		<script src="../jquery.js"></script>
 		<script>
 			/*********************************
 			***********PRESENTATION***********
@@ -22,7 +23,7 @@
 				Information et Divers contiennent chacun un sous-menu. À la fin du chargement du document, modifiez uniquement la couleur du titre des quatre menus (Accueil, Information, Divers, Autre) sans modifier la couleur des liens des sous-menus.
 				Utilisez balise1 > balise2 et la méthode css().
 			*/
-
+			
 			/*
 			** 2 **
 			À la fin du chargement du document, modifiez la couleur du h2 Un autre titre.
@@ -97,6 +98,11 @@
 				</p>
 			</article>
 		</id>
+		<script>
+			$('nav > ul > li > a').css('color', 'tomato'); // question 1
+			$('hr + h2').css('color', 'cyan');  // question 2
+			$('hr ~ p').css('color', 'yellow');  // question 3
+		</script>
 		<noscript>
 			<p>Veuillez activer JavaScript</p>
 		</noscript>

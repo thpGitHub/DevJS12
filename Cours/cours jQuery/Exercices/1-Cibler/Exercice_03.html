@@ -4,6 +4,7 @@
 		<meta charset="utf-8"/>
 		<title>jQuery : Exercice 03</title>
 		<link rel="stylesheet" href="../src/styles1.css">
+		<script src="../jquery.js"></script>
 		<script>
 			/*********************************
 			***********PRESENTATION***********
@@ -41,7 +42,11 @@
 			À la fin du chargement du document, changez la taille de la police de l'avant-dernier lien des sous-menus.
 				Utilisez nth-last-child().
 			*/
-
+			window.onload = function () {
+				$('p:first-child').css('text-decoration', 'underline');
+				$('p:first-of-type').css('color', 'green');
+				$('li ul li:nth-last-child(2)').css('font-size', '30px');
+			};
 
 		</script>
 	</head>
