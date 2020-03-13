@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Exemple 2</title>
+    <script src="jquery.js"></script>
+    <script>
+      $(function() {
+        setInterval(function() {
+          $('div').toggleClass('changement');
+        }, 500);
+      });
+    </script>
+    <style>
+      div {
+        border: 5px solid red;
+        color: red;
+        font-size: 90px;
+        height: 90px;
+        left: 30%;
+        position: fixed;
+        text-align: center;
+        top: calc(50% - 50px);
+        width: 40%;
+      }
+      .changement {
+        background-color: red;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Texte clignotant</h1>
+    <div>Promo !</div>
+  </body>
+</html>

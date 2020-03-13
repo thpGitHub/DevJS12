@@ -3,63 +3,56 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>jQuery : Exercice 05</title>
+	<title>jQuery : Exercice 06</title>
 	<link rel="stylesheet" href="../src/styles1.css">
 	<script src="../jquery.js"></script>
 	<script>
 		/*********************************
 		***********PRESENTATION***********
 		**********************************
-			Le chaînage des méthodes fait partie des concepts importants de jQuery.
-			Ainsi, il est possible d'écrire :
-			$('h1').html('Nouveau titre').css('fontSize','40px');
-
-			Cependant, il faut prêter attention à la documentation de jQuery qui préciser pour chaque méthode le type de donnée renvoyé (par exemple jQuery, donc un objet, ou une chaîne). Ainsi, il n'est pas possible de chaîner une méthode qui renvoi une chaîne et une méthode qui attend un objet.
-
-			À chaque fois que l'on écrit $('p'), on charge un objet en mémoire. Afin de limiter l'occupation en mémoire, il est possible de stocker cet objet dans une variable de la façon suivante :
-			var monObjetjQuery = $('#bidule');
-			bidule.html('Un <span>texte</span>');
+			jQuery permet aisément de travailler sur les class. Ainsi, on peut :
+			_ addClass() : ajouter une/plusieurs class.
+			_ removeClass() : enlever une/plusieurs class.
 		*/
 
 		/**********************************
 		*************EXERCICES*************
 		***********************************
 		** 1 **
-			À la fin du chargement du document, ajoutez du texte dans la div#message et modifiez la couleur du texte affiché.
-			Utilisez html() et css().
+			Créez un class pour styler les paragraphes. À la fin du chargement du document, ajoutez cette class au second paragraphe de la section.
+			Utilisez addClass().
 		*/
-	$(function () {
-	$('div#message').html("Ceci est un texte").css('color','tomato');}
-	);
-		/*
-		** 2 **
-			Deux secondes après le chargement du document , ajoutez un autre texte et modifiez l'apparence de ce texte.
-			Utilisez setTimeout, html() et css().
-		*/
-	var $message=$('#message');
-	setTimeout(function() {
-	$message.html('Le nouveau texte').css('background-color', 'black');
-	},2000);
-	
-	var $message = $('#message');
-			setTimeout(function () {
-				$message.html('Changement de texte').css('text-transform','uppercase');
-			},3000);
+		$(function () {
+			$('section div p:first-child').addClass('changement');
+			/*
+			** 2 **
+			Créez une second class pour styler des paragraphes. À la fin du chargement du document, ajoutez cette class aux premier et troisième paragraphe de la section.
+			Utilisez addClass().
+			*/
+			$('section>p, section div p:last-child').addClass('modification');
+			/*
+			** 3 **
+			Deux secondes après la fin du chargement du document, enlevez les deux class créées.
+			Utilisez removeClass().
+			*/
+			function remiseAZero () {
+				$('section p').removeClass('changement modification');
+			};
 
-	/*var $message = $('#message');
-	setTimeout(function () {
-    $message.html('Changement de texte').css('text-transform','uppercase');
-	},2000);*/
-	
-	
-
-		/*
-		** 3 **
-			Quatre secondes après le chargement du document, vous devez récupérer le texte de la div#message, lui ajouter un autre texte et modifier l'apparence de ce texte.
-			Utilisez setTimeout, html() et css().
-		*/
-
+			setTimeout(remiseAZero,2000);
+		});
 	</script>
+	<style>
+		.changement {
+			color: coral;
+			font-size: 20px;
+		}
+
+		.modification {
+			border: dotted 3px chartreuse;
+			margin-right: 5%;
+		}
+	</style>
 </head>
 
 <body>
