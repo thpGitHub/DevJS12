@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Introduction - version 5</title>
+    <script src="monoutil-5.js"></script>
+    <script>
+      window.onload = function() {
+        monOutil(".element")
+          .texte("Coucou")
+          .unStyle("background-color", "red");
+        monOutil("#cible")
+          .unStyle("font-weight", "bold")
+          .unStyle("transform", "rotate(3deg)");
+      };
+    </script>
+  </head>
+  <body>
+    <h1 class="element">Introduction - version 5</h1>
+    <p id="cible">Premier texte</p>
+    <p>Second texte</p>
+    <p class="element">Troisième texte</p>
+    <p>Quatrième texte</p>
+  </body>
+</html>

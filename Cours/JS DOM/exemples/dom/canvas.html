@@ -136,6 +136,34 @@
         */
         context.fillRect(joueur.x, joueur.y, joueur.width, joueur.height);
 
+        context.save();
+
+        // nouveaux styles
+        context.fillStyle = "lightblue";
+        context.lineWidth = 10;
+
+        context.beginPath();
+        context.arc(200, 200, 30, 0, Math.PI);
+        context.fill();
+        context.stroke();
+        context.closePath();
+        context.restore();
+
+        context.beginPath();
+        context.arc(400, 200, 30, 0, 2 * Math.PI);
+
+        context.closePath();
+
+        context.beginPath();
+        context.moveTo(100, 100);
+        context.lineTo(150, 120);
+        context.lineTo(250, 200);
+        context.lineTo(90, 180);
+        context.lineTo(100, 100);
+        context.fill();
+        context.stroke();
+        context.closePath();
+
         x += 1;
 
         setTimeout(boucle, 15);
